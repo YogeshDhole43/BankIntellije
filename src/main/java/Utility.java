@@ -80,21 +80,17 @@ public class Utility
  		}*/
         return data;
     }
-    public void captureScreenshot(String fileName) {
+    public void captureScreenshot(String fileName) throws IOException {
         if(screenshotsSubFolderName == null) {
             LocalDateTime myDateObj = LocalDateTime.now();
-            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("ddMMyyyyHHmmss");
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd/MM/yyyy/HH_mm_ss");
             screenshotsSubFolderName = myDateObj.format(myFormatObj);
         }
         TakesScreenshot driver = null;
         TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
         File sourceFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
         File destFile = new File("./Screen/"+ screenshotsSubFolderName+"/"+fileName);
-        try {
-            FileUtils.copyFile(sourceFile, destFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FileUtils.copyFile(sourceFile, destFile);
         System.out.println("Screenshot saved successfully");
     }
 

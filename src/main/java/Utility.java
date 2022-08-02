@@ -83,7 +83,7 @@ public class Utility
     public void captureScreenshot(String fileName) {
         if(screenshotsSubFolderName == null) {
             LocalDateTime myDateObj = LocalDateTime.now();
-            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("ddMMyyyyHHmmss");
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd/MM/yyyy/HH_mm_ss");
             screenshotsSubFolderName = myDateObj.format(myFormatObj);
         }
         TakesScreenshot driver = null;
